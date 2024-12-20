@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <p>Welcome to YouReview, a website where you can review games that you have played and see what other people are reviewing.</p>
+
+</div>
+
+<br>
+
+<table class="review_table">
+
+    <thead>
+        <th>{{ review['review_title'] }}</th>
+        <th>{{ revuew['game'] }}</th>
+        <th>{{ review['username'] }}</th>
+        <th>{{ review_title['score'] }}</th>
+    </thead>
+
+</table>
+
+{% endblock %}
