@@ -13,12 +13,22 @@
 <table class="review_table">
 
     <thead>
-        <th>{{ review['review_title'] }}</th>
-        <th>{{ revuew['game'] }}</th>
-        <th>{{ review['username'] }}</th>
-        <th>{{ review_title['score'] }}</th>
+        <th>review title</th>
+        <th>game</th>
+        <th>username</th>
+        <th>Score</th>
     </thead>
 
+    <tbody>
+        {% for review in Reviews %}
+        <tr>
+            <td>{{ review['review_title'] }}</td>
+            <td>{{ review['game'] }}</td>
+            <td>{{ review['user_name'] }}</td>
+            <td>{{ review['review_title'] }}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
 </table>
 
 {% endblock %}
