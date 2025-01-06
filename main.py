@@ -9,9 +9,6 @@ def Home():
     reviewData = db.GetAllReviews()
     return render_template("index.html", reviews=reviewData)
 
-@app.route("/login", methods=["GET", "POST"])
-def Login():
-    return render_template("login.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def Register():
@@ -27,6 +24,28 @@ def Register():
             return redirect("/")
         
     return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def Login():
+
+    error = None
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+
+        # Did they provide good details
+        user = db.CheckLogin(username, password)
+        if user:
+            # Yes! Save their username and id then
+            session['id'] = user['id']
+            session['username'] = user['username']
+
+            # Send them back to the homepage
+            return redirect("/")
+        else:
+            error = "Invalid username or password"
+        
+    return render_template("login.html", error=error)
 
 @app.route("/createReview", methods=["GET","POST"])
 def createReview():

@@ -17,6 +17,8 @@ def GetAllReviews():
     db.close()
     return reviews
 
+
+
 def CheckLogin(username, password):
 
     db = GetDB()
@@ -30,6 +32,8 @@ def CheckLogin(username, password):
         if check_password_hash(user['password'], password):
             # They got it right, return their details
             return user
+    else:
+        error = "User not found"
        
     # If we get here, the username or password failed.
     return None

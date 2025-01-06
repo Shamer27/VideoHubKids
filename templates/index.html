@@ -5,6 +5,10 @@
 <div class="container">
 
     <p>Welcome to YouReview, a website where you can review games that you have played and see what other people are reviewing.</p>
+    {% if session['username'] %}
+        <br>
+        <p>Hello {{ session['username'] }}</p>
+    {% endif %}
 
 </div>
 
@@ -17,18 +21,17 @@
 
     <thead>
         <th>Review Title</th>
-        <th>Game</th>
-        <th>User</th>
-        <th>Score</th>
+        <th>Review</th>
     </thead>
 
     <tbody>
-        {% for review in Reviews %}
+        {% for Reviews in review %}
         <tr>
-            <td>{{ review['review_title'] }}</td>
-            <td>{{ review['game'] }}</td>
-            <td>{{ review['user_name'] }}</td>
-            <td>{{ review['review_title'] }}</td>
+            <td>{{ Reviews['review_title'] }}</td>
+            <td>{{ Reviews['game'] }}</td>
+            <td>{{ Reviews['user_name'] }}</td>
+            <td>{{ Reviews['review_title'] }}</td>
+            <td>{{ Reviews['review_title'] }}</td>
         </tr>
     </tbody>
     {% endfor %}

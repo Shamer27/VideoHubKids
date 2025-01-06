@@ -10,4 +10,9 @@
     <input type="submit" value="Login">
 </form>
 <p>Don't have an account? Click <a href="/register">here</a> to register.</p>
+
+
+{% if error %}
+    <p style="color: red">{{ error }}</p>
+{% endif %}
 {% endblock %}
