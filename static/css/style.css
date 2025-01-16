@@ -52,19 +52,21 @@ nav a.active {
     color: white;
 }
 
-.container {
+/* .container {
 
-}
+} */
 
 .review_table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
 }
 
 .review_table td, .review_table th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
+    text-align: center;
 }
 
 .review_table tr:nth-child(even){background-color: #f2f2f2;}
@@ -77,6 +79,18 @@ nav a.active {
     text-align: left;
     background-color: #1abc9c;
     color: white;
+}
+
+.review-table .review-info {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #1abc9c;
+    color: white;
+}
+
+.review-table .review-text {
+    height: 100px; /* Adjust height for the review text box */
 }
 
 input[type=text], input[type="password"], input[type="date"], input[type="number"], select {

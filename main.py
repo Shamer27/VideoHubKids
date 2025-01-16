@@ -2,12 +2,12 @@ from flask import Flask, render_template, request, session, redirect
 import db
 
 app = Flask(__name__)
-app.secret_key = "gtg"
+app.secret_key = "uReview"  # Set a secret key for session management
 
 @app.route("/")
 def Home():
     reviewData = db.GetAllReviews()
-    return render_template("index.html", reviews=reviewData)
+    return render_template("index.html", Games=reviewData)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -20,7 +20,9 @@ def Register():
 
         # Try and add them to the DB
         if db.RegisterUser(username, password):
-            # Success! Let's go to the homepage
+            # Success! Set the session ID to the new user
+            session['user_id'] = username  # Assuming username is unique
+            # Let's go to the homepage
             return redirect("/")
         
     return render_template("register.html")
@@ -60,8 +62,12 @@ def createReview():
         score = request.form['score']
 
         # Send the data to add our new guess to the db
-        db.AddGuess(user_id, date, game, score)
+        db.AddReview(user_id, date, game, score)
 
     return render_template("createReview.html")
+
+@app.route("/review", methods=["GET"])
+def viewReview():
+    return render_template("review.html")
 
 app.run(debug=True, port=5000)

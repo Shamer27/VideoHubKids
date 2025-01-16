@@ -16,25 +16,34 @@
     <a href="/createReview"><button>Create Review</button></a>
 </div>
 <br>
+<h2>Recent Reviews</h2>
 
 <table class="review_table">
-
     <thead>
         <th>Review Title</th>
-        <th>Review</th>
-    </thead>
+            <table class="review_info">
 
+                <td>user</td>
+                <td>date</td>
+                <td>game</td>
+                <td>score</td>
+
+    </thead>
+    <th>Review</th>
     <tbody>
-        {% for Reviews in review %}
+        {% for review in Games %}
         <tr>
-            <td>{{ Reviews['review_title'] }}</td>
-            <td>{{ Reviews['game'] }}</td>
-            <td>{{ Reviews['user_name'] }}</td>
-            <td>{{ Reviews['review_title'] }}</td>
-            <td>{{ Reviews['review_title'] }}</td>
+            <td>{{ review['review_title'] }}</td>
+            <td>{{ review['reviewer_name'] }}</td>
+            <td>{{ review['date'] }}</td>
+            <td>{{ review['game'] }}</td>
+            <td>{{ review['review'] }}</td>
+
         </tr>
+        {% endfor %}
+        </table>
     </tbody>
-    {% endfor %}
+
 </table>
 
 {% endblock %}
