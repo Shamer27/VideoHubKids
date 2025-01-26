@@ -21,21 +21,20 @@
 <table class="review_table">
     <thead>
         <th>Review Title</th>
-            <table class="review_info">
+            <table>
 
-                <td>user</td>
-                <td>date</td>
-                <td>game</td>
-                <td>score</td>
-
+                <td class="review_info">User</td>
+                <td class="review_info">Date</td>
+                <td class="review_info">Game</td>
+                <td class="review_info">Score</td>
     </thead>
     <th>Review</th>
     <tbody>
         {% for review in Games %}
-        <tr>
-            <td>{{ review['review_title'] }}</td>
+        <tr class="review_row">
             <td>{{ review['reviewer_name'] }}</td>
             <td>{{ review['date'] }}</td>
+            <td>{{ review['review_title'] }}</td>
             <td>{{ review['game'] }}</td>
             <td>{{ review['review'] }}</td>
 

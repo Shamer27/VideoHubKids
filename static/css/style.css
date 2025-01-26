@@ -63,7 +63,7 @@ nav a.active {
     table-layout: fixed;
 }
 
-.review_table td, .review_table th {
+.review_table th {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
@@ -71,25 +71,33 @@ nav a.active {
 
 .review_table tr:nth-child(even){background-color: #f2f2f2;}
 
-.review_table tr:hover {background-color: #ddd;}
+.review_table tr:hover {background-color: #ddd;} 
 
 .review_table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #1abc9c;
-    color: white;
+    color: white; 
 }
 
-.review-table .review-info {
+/* Review coloum names */
+.review_info {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
-    background-color: #1abc9c;
-    color: white;
+    text-align: center;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-style: groove;
+    border-color: pink;
 }
 
-.review-table .review-text {
+/* review table data */
+.review_row {
+    padding-left: 20px;
+    text-align: center;
+}
+.review_table .review_text {
     height: 100px; /* Adjust height for the review text box */
 }
 
