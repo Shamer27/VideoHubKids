@@ -14,6 +14,7 @@
 --  INSERT INTO Users (username, password) VALUES
 --                         ('adminUser', 'adminPassword'),
 --                         ('test1User', 'test1Pass');
+-- 
 -- INSERT INTO Games (user_id, date, score, game, review, review_title, reviewer_name) VALUES
 --                         (1, '2021-01-01', 10, 'Game1', 'This is a review of Game1', 'Game1 Review', 'adminUser'),
 --                         (1, '2021-01-02', 9, 'Game2', 'This is a review of Game2', 'Game2 Review', 'adminUser'),
@@ -35,6 +36,3 @@
 --                         (2, '2021-01-08', 3, 'Game8', 'This is a review of Game8', 'Game8 Review', 'test1User'),
 --                         (2, '2021-01-09', 2, 'Game9', 'This is a review of Game9', 'Game9 Review', 'test1User'),
 --                         (2, '2021-01-10', 1, 'Game10', 'This is a review of Game10', 'Game10 Review', 'test1User'); 
-
-INSERT INTO Games (user_id, date, score, game, review, review_title, reviewer_name) VALUES
-                  (1, '2021-01-01', 5, 'Game1', 'This is a review of Game1', 'Game1 Review', 'test1user');

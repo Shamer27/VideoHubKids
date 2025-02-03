@@ -99,6 +99,7 @@ nav a.active {
 }
 .review_table .review_text {
     height: 100px; /* Adjust height for the review text box */
+    text-align: left;
 }
 
 input[type=text], input[type="password"], input[type="date"], input[type="number"], select {

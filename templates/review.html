@@ -2,15 +2,7 @@
 
 {% block content %}
 
-<form action="/review" method="post">
-    <label>Username: </label>
-    <input type="text" name="username" id="username">
-    <label>Password: </label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="Login"> 
-</form>
 
-{% if error %}
-    <p style="color: red">{{ error }}</p>
-{% endif %}
+
+
 {% endblock %}

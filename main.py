@@ -6,6 +6,7 @@ app.secret_key = "uReview"  # Set a secret key for session management
 
 @app.route("/")
 def Home():
+    sesssionId = None
     reviewData = db.GetAllReviews()
     return render_template("index.html", Games=reviewData)
 
@@ -22,8 +23,9 @@ def Register():
         if db.RegisterUser(username, password):
             # Success! Set the session ID to the new user
             session['user_id'] = username  # Assuming username is unique
+            
             # Let's go to the homepage
-            return redirect("/")
+
         
     return render_template("register.html")
 
@@ -41,9 +43,9 @@ def Login():
             # Yes! Save their username and id then
             session['id'] = user['id']
             session['username'] = user['username']
-
-            # Send them back to the homepage
             return redirect("/")
+            # Send them back to the homepage
+
         else:
             error = "Invalid username or password"
         
