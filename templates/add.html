@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add a new guess</h2>
+<form action="/add" method="post">
+    <label>Review Title: </label>
+    <input type="text" name="title" id="title">
+    <label>Date: </label>
+    <input type="date" name="date" id="date">
+    <label>Game: </label>
+    <input type="text" name="game" id="game">
+    <label>Score #/5: </label>
+    <input type="number" name="score" id="score" min="0" max="5">
+    <label>Write review here: </label>
+    <textarea type="text" id="review" class="reviewBox"></textarea>
+    <input type="submit" value="Add guess">
+</form>
+{% endblock %}

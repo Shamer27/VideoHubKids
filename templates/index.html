@@ -1,46 +1,40 @@
+
 {% extends "base.html" %}
 
 {% block content %}
 
 <div class="container">
 
-    <p>Welcome to YouReview, a website where you can review games that you have played and see what other people are reviewing.</p>
+    <h2>Welcome to YouReview. </h2>
+
     {% if session['username'] %}
-        <br>
-        <p>Hello {{ session['username'] }}</p>
-    {% endif %}
+    <br>
+    <p>Hello {{ session['username'] }}</p>
+    <a href="/add"><button>Add Review</button></a>
+{% endif %}
 
 </div>
 
-<div class="container_add">
-    <a href="/createReview"><button>Create Review</button></a>
-</div>
 <br>
-<h2>Recent Reviews</h2>
 
-<table class="review_table">
+<table class="guess_table">
+
     <thead>
         <th>Review Title</th>
-            <table>
-
-                <td class="review_info">User</td>
-                <td class="review_info">Date</td>
-                <td class="review_info">Game</td>
-                <td class="review_info">Score</td>
+        <th>Game</th>
+        <th>Review</th>
+        <th>Score</th>
     </thead>
-    <th>Review</th>
-    <tbody>
-        {% for review in Games %}
-        <tr class="review_row">
-            <td>{{ review['reviewer_name'] }}</td>
-            <td>{{ review['date'] }}</td>
-            <td>{{ review['review_title'] }}</td>
-            <td>{{ review['game'] }}</td>
-            <td>{{ review['review'] }}</td>
 
+    <tbody>
+        {% for guess in guesses %}
+        <tr>
+            <td>{{ guess['reviewTitle'] }}</td>
+            <td>{{ guess['gameName'] }}</td>
+            <td>{{ guess['reviewText'] }}</td>
+            <td>{{ guess['score'] }}</td>
         </tr>
         {% endfor %}
-        </table>
     </tbody>
 
 </table>

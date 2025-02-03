@@ -2,13 +2,41 @@ from flask import Flask, render_template, request, session, redirect
 import db
 
 app = Flask(__name__)
-app.secret_key = "uReview"  # Set a secret key for session management
+app.secret_key = "gtg"
 
 @app.route("/")
 def Home():
-    reviewData = db.GetAllReviews()
-    return render_template("index.html", Games=reviewData)
+    guessData = db.GetAllReviews()
+    return render_template("index.html", guesses=guessData)
 
+@app.route("/login", methods=["GET", "POST"])
+def Login():
+    
+    # They sent us data, get the username and password
+    # then check if their details are correct.
+    error = None
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+
+        # Did they provide good details
+        user = db.CheckLogin(username, password)
+        if user:
+            # Yes! Save their username then
+            session['username'] = user['username']
+            session['id'] = user['id']
+            return redirect("/");
+            # Send them back to the homepage
+        else:
+            error = "Invalid username or password"
+
+
+    return render_template("login.html", error=error)
+
+@app.route("/logout")
+def Logout():
+    session.clear()
+    return redirect("/")
 
 @app.route("/register", methods=["GET", "POST"])
 def Register():
@@ -20,54 +48,37 @@ def Register():
 
         # Try and add them to the DB
         if db.RegisterUser(username, password):
-            # Success! Set the session ID to the new user
-            session['user_id'] = username  # Assuming username is unique
-            # Let's go to the homepage
-            return redirect("/")
-        
+            user = db.CheckLogin(username, password)
+            session['username'] = user['username']
+            session['id'] = user['id']
+            return redirect("/");
+
+            # Success! Let's go to the homepage
+
+       
     return render_template("register.html")
 
-@app.route("/login", methods=["GET", "POST"])
-def Login():
 
-    error = None
-    if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
+@app.route("/add", methods=["GET","POST"])
+def Add():
 
-        # Did they provide good details
-        user = db.CheckLogin(username, password)
-        if user:
-            # Yes! Save their username and id then
-            session['id'] = user['id']
-            session['username'] = user['username']
-
-            # Send them back to the homepage
-            return redirect("/")
-        else:
-            error = "Invalid username or password"
-        
-    return render_template("login.html", error=error)
-
-@app.route("/createReview", methods=["GET","POST"])
-def createReview():
-
+    if session.get('username') == None:
+        return redirect("/")
     # Did they click submit?
     if request.method == "POST":
         user_id = session['id']
-        title = request.form['title']
-        review = request.form['review']
+        username = session['username']
         date = request.form['date']
         game = request.form['game']
         score = request.form['score']
+        reviewText = request.form.get('review')
+        title = request.form['title']
+        
 
         # Send the data to add our new guess to the db
-        db.AddReview(user_id, date, game, score)
+        db.AddReview(user_id, date, game, score, reviewText, title, username)
 
-    return render_template("createReview.html")
+    return render_template("add.html")
 
-@app.route("/review", methods=["GET"])
-def viewReview():
-    return render_template("review.html")
 
 app.run(debug=True, port=5000)
