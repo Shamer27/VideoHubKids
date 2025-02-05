@@ -51,14 +51,14 @@ def RegisterUser(username, password):
 
     return True
 
-def AddReview(user_id, title, score, game, date, reviewText):
+def AddReview(user_id, reviewTitle, score, gameName, date, reviewText, username):
    
     # Check if any boxes were empty
-    if date is None or game is None:
+    if date is None or gameName is None:
         return False
    
     # Get the DB and add the guess
     db = GetDB()
-    db.execute("INSERT INTO Reviews (user_id, score, gameName, date, reviewText, reviewTitle, username) VALUES (?, ?, ?, ?, ?, ?, ?)", (user_id, title, score, game, date, reviewText ))
+    db.execute("INSERT INTO Reviews (user_id, reviewTitle, score, gameName, date, reviewText, username) VALUES (?, ?, ?, ?, ?, ?, ?)", (user_id, reviewTitle, score, gameName, date, reviewText, username ))
     db.commit()
     return True

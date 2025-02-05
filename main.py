@@ -69,14 +69,15 @@ def Add():
         user_id = session['id']
         username = session['username']
         date = request.form['date']
-        game = request.form['game']
+        gameName = request.form['game']
         score = request.form['score']
         reviewText = request.form.get('review')
-        title = request.form['title']
+        reviewTitle = request.form['title']
         
 
         # Send the data to add our new guess to the db
-        db.AddReview(user_id, date, game, score, reviewText, title, username)
+        db.AddReview(user_id, reviewTitle, score, gameName, date, reviewText, username)
+        return redirect("/");
 
     return render_template("add.html")
 
