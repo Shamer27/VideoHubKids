@@ -27,12 +27,12 @@
     </thead>
 
     <tbody>
-        {% for guess in guesses %}
+        {% for review in reviews %}
         <tr>
-            <td>{{ guess['reviewTitle'] }}</td>
-            <td>{{ guess['gameName'] }}</td>
-            <td>{{ guess['reviewText'] }}</td>
-            <td>{{ guess['score'] }}</td>
+            <td><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a></td>
+            <td>{{ review['gameName'] }}</td>
+            <td>{{ review['reviewText'] }}</td>
+            <td>{{ review['score'] }}</td>
         </tr>
         {% endfor %}
     </tbody>

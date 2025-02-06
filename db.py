@@ -63,6 +63,10 @@ def AddReview(user_id, reviewTitle, score, gameName, date, reviewText, username)
     db.commit()
     return True
 
-def viewReview(user_id, reviewTitle, score, gameName, date, reviewText, username):
+def getSingleReview(id):
+
     db = GetDB()
-    db.execute("SELECT id, reviewTitle, score, gameName, date, reviewText, username, FROM Reviews WHERE")
+    review = db.execute(f"SELECT * FROM Reviews WHERE id={id}").fetchone()
+    db.close()
+
+    return review

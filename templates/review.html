@@ -1,3 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<!-- Allows users to scroll for smaller screens -->
+<div style="overflow-x: scroll;">
+    <h1>{{ review['reviewTitle'] }}</h1>
+</div>
+
+
+<!-- Displays the table next to the image if space is avaliable, can be scrolled for smaller screens -->
+<div style="display: inline-block; max-width: 100%; overflow-x: auto;">
+
+    <br>
+
+    <table class="reviews_table">
+
+        <thead>
+            <th>Username</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Rating</th>
+        </thead>
+
+        <tbody>
+            <tr class ="single_review">
+                <td>{{ review['username'] }}</td>
+                <td>{{ review['reviewText'] }}</td>
+                <td>{{ review['date'] }}</td>
+                <td>{{ review['score']}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

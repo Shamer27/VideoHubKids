@@ -6,8 +6,8 @@ app.secret_key = "gtg"
 
 @app.route("/")
 def Home():
-    guessData = db.GetAllReviews()
-    return render_template("index.html", guesses=guessData)
+    reviewData = db.GetAllReviews()
+    return render_template("index.html", reviews=reviewData)
 
 @app.route("/login", methods=["GET", "POST"])
 def Login():
@@ -80,6 +80,16 @@ def Add():
         return redirect("/");
 
     return render_template("add.html")
+
+@app.route("/<int:id>")
+def singleReview(id):
+
+ #matching the page route
+    reviewData = db.getSingleReview(id)
+    if reviewData is None:
+        redirect("/")
+
+    return render_template("review.html", review=reviewData)
 
 
 app.run(debug=True, port=5000)
