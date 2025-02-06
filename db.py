@@ -62,3 +62,7 @@ def AddReview(user_id, reviewTitle, score, gameName, date, reviewText, username)
     db.execute("INSERT INTO Reviews (user_id, reviewTitle, score, gameName, date, reviewText, username) VALUES (?, ?, ?, ?, ?, ?, ?)", (user_id, reviewTitle, score, gameName, date, reviewText, username ))
     db.commit()
     return True
+
+def viewReview(user_id, reviewTitle, score, gameName, date, reviewText, username):
+    db = GetDB()
+    db.execute("SELECT id, reviewTitle, score, gameName, date, reviewText, username, FROM Reviews WHERE")
