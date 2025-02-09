@@ -11,15 +11,18 @@
 
     <link rel="stylesheet" href="static/css/style.css" />
     <link rel="manifest" href="static/manifest.json" />
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
 </head>
 
 <body>
 
-    <h1 class="banner">YouReview</h1>
+    <h1 class="banner"><img src="static/images/logo.png" alt="YouReview Logo" class="logo">YouReview</h1>
+    <h2 class="bannerButtons">
+        <a href="/add"><button>Add Review</button></a>
+        <a href="/"><button>Home</button></a>
 
     <!-- Include a navigation menu -->
-    <nav>
+    <!-- <nav>
         <a href="/">Home</a>
         {% if not session['username'] %}
             <a href="/login">Login</a>
@@ -27,7 +30,7 @@
         {% else %}
             <a href="/logout">Logout</a>
         {% endif %}
-    </nav>
+    </nav> -->
 
     <!-- This section will contain the page content -->
     <main>
