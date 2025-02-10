@@ -17,26 +17,23 @@
 
 <br>
 
-<table class="guess_table">
 
-    <thead>
-        <th>Review Title</th>
-        <th>Game</th>
-        <th>Review</th>
-        <th>Score</th>
-    </thead>
+<body>
 
-    <tbody>
+    <div class="reviews-container">
+        <h1>Recent Reviews</h1>
+        
         {% for review in reviews %}
-        <tr>
-            <td><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a></td>
-            <td>{{ review['gameName'] }}</td>
-            <td>{{ review['reviewText'] }}</td>
-            <td>{{ review['score'] }}</td>
-        </tr>
+        <div class="review">
+            <h2><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a></h2>
+            <p class="gameName">{{ review['gameName'] }}</p>
+            <p class="content">{{ review['reviewText'] }}</p>
+            <p class="rating">{{ review['score'] }}</p>
+        </div>
         {% endfor %}
-    </tbody>
 
-</table>
+    </div>
+
+</body>
 
 {% endblock %}

@@ -3,9 +3,6 @@
 {% block content %}
 
 <!-- Allows users to scroll for smaller screens -->
-<div style="overflow-x: scroll;">
-    <h1>{{ review['reviewTitle'] }}</h1>
-</div>
 
 
 <!-- Displays the table next to the image if space is avaliable, can be scrolled for smaller screens -->
@@ -13,25 +10,21 @@
 
     <br>
 
-    <table class="reviews_table">
-
-        <thead>
-            <th>Username</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Rating</th>
-        </thead>
-
-        <tbody>
-            <tr class ="single_review">
-                <td>{{ review['username'] }}</td>
-                <td>{{ review['reviewText'] }}</td>
-                <td>{{ review['date'] }}</td>
-                <td>{{ review['score']}}</td>
-            </tr>
-        </tbody>
-
-    </table>
 </div>
+<body class="single-body">
+  <div class="single-review-container">
+    <h1 class="single-review-container">{{ review['gameName']}}</h1>
+    <h2 class="single-review-title">{{ review['reviewTitle'] }}</h2>
+    <p class="single-reviewed-by">Reviewed by: <span class="username">{{ review['username'] }}</span></p>
+    <p class="-single-review-date">Reviewed on: {{ review['date'] }}</p>
+    <div class="single-review-content">
+
+      <p>
+        {{ review['reviewText'] }}
+      </p>
+    </div>
+    <p class="single-signature">Score: {{ review['score']}}</p>
+  </div>
+</body>
 
 {% endblock %}
