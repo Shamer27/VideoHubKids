@@ -5,12 +5,11 @@
 
 <div class="container">
 
-    <h2>Welcome to YouReview. </h2>
+    <h1>Welcome to YouReview. </h1>
 
     {% if session['username'] %}
     <br>
     <p>Hello {{ session['username'] }}</p>
-    <a href="/add"><button>Add Review</button></a>
 {% endif %}
 
 </div>
@@ -20,12 +19,13 @@
 
 <body>
 
+
     <div class="reviews-container">
-        <h1>Recent Reviews</h1>
+        <h2>Recent Reviews</h2>
         
         {% for review in reviews %}
         <div class="review">
-            <h2><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a></h2>
+            <h3><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a>  <img src="static/images/link.png" class="link" alt="link"></h3>
             <p class="gameName">{{ review['gameName'] }}</p>
             <p class="content">{{ review['reviewText'] }}</p>
             <p class="rating">{{ review['score'] }}</p>
@@ -33,6 +33,7 @@
         {% endfor %}
 
     </div>
+
 
 </body>
 

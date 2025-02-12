@@ -70,3 +70,26 @@ def getSingleReview(id):
     db.close()
 
     return review
+
+def showUserrReviews(username):
+
+    db = GetDB()
+    reviews = db.execute("SELECT * FROM Reviews WHERE username=? COLLATE NOCASE", (username,)).fetchall()
+    db.close()
+    return reviews
+
+def UpdateReview(id, reviewTitle, score, gameName, date, reviewText):
+    db_conn = GetDB()
+    db_conn.execute("""
+        UPDATE Reviews
+        SET reviewTitle=?, score=?, gameName=?, date=?, reviewText=?
+        WHERE id=?
+    """, (reviewTitle, score, gameName, date, reviewText, id))
+    db_conn.commit()
+    db_conn.close()
+
+def DeleteReview(id):
+    db_conn = GetDB()
+    db_conn.execute("DELETE FROM Reviews WHERE id=?", (id,))
+    db_conn.commit()
+    db_conn.close()
