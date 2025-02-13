@@ -53,7 +53,7 @@ def Register():
             user = db.CheckLogin(username, password)
             session['username'] = user['username']
             session['id'] = user['id']
-            return redirect("/");
+            return redirect("/")
 
             # Success! Let's go to the homepage
 
@@ -77,7 +77,7 @@ def Add():
         reviewTitle = request.form['title']
         
         db.AddReview(user_id, reviewTitle, score, gameName, date, reviewText, username)
-        return redirect("/", addError);
+        return redirect("/")
         
     else:
         addError = "Please fill in all fields"
@@ -112,13 +112,13 @@ def edit(id):
 
     # Check if user is logged in
     if "username" not in session:
-        flash("Please log in to edit your review.")
-        return redirect(url_for("/Login"))
-    print(f"Session ID: {session.get('id')}")  # Debugging step 3
+        print("Please log in to edit your review.")
+        return redirect("/login")
+
 
     # Check if user is the owner of the review
-    if session["id"] != reviewData["user_id"]:
-        flash("You can only edit your own reviews.")
+    if session['id'] != reviewData["user_id"]:
+        print("You can only edit your own reviews.")
         return redirect("/")
 
     if request.method == "POST":
@@ -131,7 +131,7 @@ def edit(id):
         # Update the review in the database
         db.UpdateReview(id, reviewTitle, score, gameName, date, reviewText)
         flash("Review updated successfully!")
-        return redirect(url_for("singleReview", id=id))
+        return redirect("/userReviews")
 
     return render_template("edit.html", review=reviewData)
 
@@ -145,7 +145,7 @@ def delete(id):
     
     if "username" not in session:
         flash("Please log in to delete your review.")
-        return redirect(url_for("/login"))
+        return redirect("/login")
     
     if session["id"] != reviewData["user_id"]:
         flash("You can only delete your own reviews.")
@@ -153,7 +153,7 @@ def delete(id):
     
     db.DeleteReview(id)
     flash("Review deleted successfully!")
-    return redirect(url_for("/"))
+    return redirect("/")
 
 @app.route("/userReviews")
 def userReviews():
