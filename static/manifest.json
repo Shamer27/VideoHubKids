@@ -1,11 +1,11 @@
 {
-    "name": "GuessThe.Game Database",
-    "short_name": "GTGDB",
+    "name": "YouReview",
+    "short_name": "URvw",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#1abc9c",
     "theme_color": "#fdfdfd",
-    "orientation": "landscape-primary",
+    "orientation": "landscape-primary", 
     "icons": [
     {
         "src": "icons/icon-128x128.png",
@@ -58,13 +58,13 @@
     ],
 "screenshots" : [
     {
-    "src": "icons/desktop_screenshot.png",
+    "src": "icons/desktop-screenshot.png",
     "sizes": "1920x1080",
     "type": "image/png",
     "label": ""
     },
     {
-    "src": "icons/mobile_screenshot.png",
+    "src": "icons/mobile-screenshot.png",
     "sizes": "1080x1920",
     "type": "image/png",
     "form_factor": "wide",

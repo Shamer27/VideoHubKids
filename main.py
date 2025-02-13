@@ -1,9 +1,11 @@
 import sqlite3
-from flask import Flask, render_template, request, session, redirect, url_for, flash
+from flask import Flask, render_template, request, session, redirect, flash 
 import db
 from werkzeug.exceptions import abort
+from flask_compress import Compress
 
 app = Flask(__name__)
+Compress(app)
 app.secret_key = "gtg"
 
 @app.route("/")
@@ -163,4 +165,5 @@ def userReviews():
     
     userReviews = db.showUserrReviews(session["username"])
     return render_template("userReviews.html", userReviews=userReviews)
+
 app.run(debug=True, port=5000)

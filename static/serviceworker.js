@@ -8,13 +8,13 @@ const cacheFiles = [
     "static/js/app.js",
     "static/images/logo.png",
     "static/images/favicon.png",
-    "static/images/topo.png",
+    "static/images/topo.avif",
     "static/icons/icon-128x128.png",
     "static/icons/icon-192x192.png",
     "static/icons/icon-384x384.png",
     "static/icons/icon-512x512.png",
-    "static/images/desktop_screenshot.png",
-    "static/images/mobile_screenshot.png",
+    "static/icons/desktop-screenshot.png",
+    "static/icons/mobile-screenshot.png",
 ];
 
 // Deletes previously registered service workers on activation
@@ -35,7 +35,7 @@ self.addEventListener('activate', evt =>
 // Downloads the routes desired to be cached on install
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(cacheFiles)
+        caches.open(CURRENT_CACHE)
             .then((cache) => {
                 console.log("Caching assets during install");
                 return cache.addAll(cacheFiles);

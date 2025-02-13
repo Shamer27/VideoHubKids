@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"); */
 
 * {
     padding: 0;
@@ -24,6 +24,12 @@ main {
     background: #2b2b2b;
     font-size: 3em;
     width: 100%;
+    
+}
+
+.bannerImage {
+    max-width: 100%;
+    max-height: 150px;
 }
 
 .logo {
@@ -230,4 +236,24 @@ body {
 
 .banner button:hover {
     background-color: #89BBFE;
+}
+
+/* Ensure sufficient touch target spacing for buttons */
+.bannerButtons button {
+    padding: 10px 20px; /* Increase padding for larger touch targets */
+    margin: 10px; /* Add margin between buttons */
+    font-size: 16px; /* Increase font size for better readability */
+}
+
+.bannerButtons a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from button */
+}
+
+.bannerButtons button a {
+    display: block; /* Make the link fill the button */
+    width: 100%; /* Ensure the link takes up the full width of the button */
+    height: 100%; /* Ensure the link takes up the full height of the button */
+    text-align: center; /* Center the text inside the button */
+    padding: 10px 20px; /* Add padding to the link */
 }
