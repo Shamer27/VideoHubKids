@@ -15,24 +15,32 @@
 </head>
 
 <body>
-
-    <h1 class="banner">YouReview</h1>
-
-    <!-- Include a navigation menu -->
-    <nav>
-        <a href="/">Home</a>
-        {% if session[id] is none %}
-        <a href="/register">Register</a>
+<div>
+    <div class="bannerImages">
+        <img src="static/images/topo.avif" class="banner" alt="bannerImage">
+        <img src="static/images/logo.png" alt="YouReview Logo" class="logoImage" alt="YouReview Logo">
+    </div>
+    <div class="bannerButtons">
+        {% if session['username'] %}
+        <button><a href="/logout" >Logout</a></button>
+        <button><a href="/add">Create Review</a></button>
+        <button><a href="/userReviews">Your Reviews</a></button>
         {% else %}
-        <a href="/login">Login</a>
-        <a href="/createReview">Create Review</a>
+        <button><a href="/login">Login</a></button>
+        <button><a href="/register">Register</a></button>
         {% endif %}
-    </nav>
+        <button><a href="/">Home</a></button>   
+    </div>
+    </h1>
+    </div>
+
+
+
 
     <!-- This section will contain the page content -->
     <main>
         {% block content %}
-        
+
         {% endblock %}
     </main>
 

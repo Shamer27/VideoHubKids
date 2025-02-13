@@ -1,48 +1,40 @@
+
 {% extends "base.html" %}
 
 {% block content %}
 
 <div class="container">
 
-    <p>Welcome to YouReview, a website where you can review games that you have played and see what other people are reviewing.</p>
+    <h1>Welcome to YouReview. </h1>
+
     {% if session['username'] %}
-        <br>
-        <p>Hello {{ session['username'] }}</p>
-    {% endif %}
+    <br>
+    <p>Hello {{ session['username'] }}</p>
+{% endif %}
 
 </div>
 
-<div class="container_add">
-    <a href="/createReview"><button>Create Review</button></a>
-</div>
 <br>
-<h2>Recent Reviews</h2>
 
-<table class="review_table">
-    <thead>
-        <th>Review Title</th>
-            <table>
 
-                <td class="review_info">User</td>
-                <td class="review_info">Date</td>
-                <td class="review_info">Game</td>
-                <td class="review_info">Score</td>
-                <td class="review_text">Review</td>
-    </thead>
-    <tbody>
-        {% for review in Games %}
-        <tr class="review_row">
-            <td>{{ review['reviewer_name'] }}</td>
-            <td>{{ review['date'] }}</td>
-            <td>{{ review['review_title'] }}</td>
-            <td>{{ review['game'] }}</td>
-            <td>{{ review['review'] }}</td>
+<body>
 
-        </tr>
+
+    <div class="reviews-container">
+        <h2>Recent Reviews</h2>
+        
+        {% for review in reviews %}
+        <div class="review">
+            <h3><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a>  <img src="static/images/link.png" class="link" alt="link"></h3>
+            <p class="gameName">{{ review['gameName'] }}</p>
+            <p class="content">{{ review['reviewText'] }}</p>
+            <p class="rating">{{ review['score'] }}</p>
+        </div>
         {% endfor %}
-        </table>
-    </tbody>
 
-</table>
+    </div>
+
+
+</body>
 
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <h1> {{ session['username'] }} Reviews</h1>
+</div>
+{% for review in userReviews %}
+<div class="review">
+    <h3><a href="/{{ review['id'] }}">{{ review['reviewTitle'] }}</a>  <img src="static/images/link.png" class="link"> <a href="{{ url_for('edit', id=review.id) }}">Edit</a>
+    </h3>
+    <p class="gameName">{{ review['gameName'] }}</p>
+    <p class="content">{{ review['reviewText'] }}</p>
+    <p class="rating">{{ review['score'] }}</p>
+</div>
+{% endfor %}
+{% endblock %}
